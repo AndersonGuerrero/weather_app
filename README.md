@@ -3,6 +3,7 @@
 # install virtualenv
 https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
 
+# create API key in https://weatherstack.com/
 
 # Install with virtualenv enabled
 
