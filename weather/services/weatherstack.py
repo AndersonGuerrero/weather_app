@@ -32,7 +32,7 @@ class WeatherStack():
                     if error['code'] in self.CODES_RETRY:
                         raise WeatherStackError(INVALID_QUERY)
                     elif error['code'] in self.CODES_ACCESS_RESTRICTED:
-                        logging.exception(str(error))
+                        logging.error(str(error))
                         raise WeatherStackError(SERVICE_LIMIT_REACHED)
                 else:
                     return response_json
