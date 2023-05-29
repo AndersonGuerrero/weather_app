@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather-{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            container: {
+              padding: '2rem',
+            },
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+</head>
+<body>
+    <div class="container mx-auto">
+      <main class="grid min-h-full place-items-center bg-white  px-6 py-24 sm:py-32 lg:px-8 aspect-square">
+        {% block content %}
+        {% endblock %}
+      </main>
+    </div>
+<script>
+  document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}'; //insert csrf token when performing AJAX request 
+  })
+  </script>
+</body>
+</html>
