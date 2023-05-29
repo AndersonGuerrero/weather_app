@@ -1,0 +1,27 @@
+<div class="border-b border-gray-900/10 pb-12 mt-8">
+{% if error %}
+<p class="mt-1 text-sm leading-6 text-gray-600">{{ error_message }}</p>
+{% else %}
+    <div class="mt-10 space-y-10">
+        <ul role="list" class="divide-y divide-gray-100" >
+            <li class="flex justify-between gap-x-6 py-5">
+                <div class="flex gap-x-4">
+                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="{{result.current.weather_icons.0}} " alt="">
+                    <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900">{{result.location.name}}</p>
+                    <p class="text-sm font-semibold leading-6 text-gray-900">{{result.location.region}} {{result.location.country}}</p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">Temperature: {{result.current.temperature}}°</p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">Humidity: {{result.current.humidity}}%</p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">Wind speed: {{result.current.wind_speed}}</p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">Is day: {{result.current.is_day}}</p>
+                    </div>
+                </div>
+                <div class="hidden sm:flex sm:flex-col sm:items-end">
+                    <p class="text-sm leading-6 text-gray-900">{{result.current.weather_descriptions.0}}</p>
+                    <p class="mt-1 text-xs leading-5 text-gray-500">Observation time <time datetime="2023-01-23T13:23Z">{{result.current.observation_time}}</time></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
