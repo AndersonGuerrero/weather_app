@@ -1,6 +1,5 @@
 import logging
 
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -22,7 +21,7 @@ class WeatherView(TemplateView):
             weather_stack_service = WeatherStack()
             try:
                 location_data = weather_stack_service.get_weather_by_location(
-                    form.data.get('street_address')
+                    form.data.get('street_address', '')
                 )
             except WeatherStackError as e:
                 error = True

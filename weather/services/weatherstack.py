@@ -1,7 +1,8 @@
 import logging
-from django.conf import settings
 
 import requests
+from django.conf import settings
+
 from .exceptions import WeatherStackError
 from weather.constants import INVALID_QUERY, SERVICE_LIMIT_REACHED
 
@@ -16,7 +17,7 @@ class WeatherStack():
         self.base_url = settings.WEATHERSTACK['API_URL']
         self.default_message = 'At the moment we have an error to consult the weather'
 
-    def get_weather_by_location(self, location):
+    def get_weather_by_location(self, location: str):
         try:
 
             url = (
